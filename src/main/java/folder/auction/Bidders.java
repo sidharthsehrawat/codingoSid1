@@ -1,0 +1,11 @@
+package folder.auction;
+
+import lombok.Data;
+
+@Data
+public class Bidders {
+
+    private String name;
+    private int id;
+
+}
