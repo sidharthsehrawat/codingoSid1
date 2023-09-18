@@ -17,7 +17,6 @@ public class MaxSquareMatrixRecursion {
                 if (maxx > res) {
                     res = maxx;
                 }
-
             }
         }
 

@@ -13,7 +13,6 @@ public class GraphHasCycle_Directed_DFS {
             this.nbr = nbr;
             this.weight = weight;
         }
-
     }
 
     public static class Pair {

@@ -1,6 +1,8 @@
 package folder.array;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class AsteroidsCollision {
@@ -8,12 +10,10 @@ public class AsteroidsCollision {
         int arr[] = {5, 10 , -5};
         int[] res = asteroidCollision(arr);
         Arrays.stream(res).forEach(a -> System.out.println(":" + a));
-
     }
 
     public static int[] asteroidCollision(int[] arr) {
-        Stack<Integer> stack = new Stack<>();
-
+        Stack<Integer> stack = new Stack<>();  // 5 , 10
         for (int astroid : arr) {
             boolean flag = true;
             while (!stack.isEmpty() && astroid < 0 && stack.peek() > 0) {

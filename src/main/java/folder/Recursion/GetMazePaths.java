@@ -14,7 +14,7 @@ public class GetMazePaths {
         };
           List<String> list = getMazePaths(1,1,m,n);
           System.out.println(list);
-        //  int countMazePath = countMazePath(1,1,m,n);
+         // int countMazePath = countMazePath(1,1,m,n);
         //  System.out.println(countMazePath);
         //int mazePathII = getMazePathsII(matrix);
         //System.out.println(mazePathII);

@@ -5,15 +5,18 @@ public class StairsDP {
         /*int stairs = 4;
         int count = getTotalStairsPathDP(stairs);
         System.out.println(count);*/
-        int stairs =7;
-       // int minStep = getMinStepsDP123(stairs);
-       // System.out.println(minStep);
+
+      /*  int stairs =7;
+        int minStep = getMinStepsDP123(stairs);
+        System.out.println(minStep);*/
+
         int[] arr= {2,5,3,1,4,5,3,2,1};
          // dp = [0,0,0,0,0,0,0,0,0,0]
-        //int res = getMinStepsDPRandomStep(arr);
-        int coins[] ={2,3,5};
+        int res = getMinStepsDPRandomStep(arr);
+
+       /* int coins[] ={2,3,5};
         int countCoins = getCoinsCount(coins,8);
-        System.out.println(countCoins);
+        System.out.println(countCoins);*/
     }
 
     private static int getCoinsCount(int[] coins, int price) {

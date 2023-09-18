@@ -1,8 +1,8 @@
 package folder.Oops;
 
-abstract class Aa{
-    
-    
+abstract class Aa {
+
+
     int a;
 
     abstract int m(int a);
@@ -17,19 +17,21 @@ abstract class Aa{
 }
 
 
-class B extends Aa{
+class B extends Aa {
 
     B(int a) {
         super(a);
     }
 
-    public B(){
+    public B() {
         super(10);
 
     }
+
     @Override
     int m(int a) {
         return 0;
     }
+
     B b = new B();
 }

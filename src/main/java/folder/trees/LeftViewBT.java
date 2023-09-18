@@ -23,7 +23,7 @@ public class LeftViewBT {
         root.left.left.left.left = new TreeNode(0);
 
         leftView(root, 1);
-        max =0;
+       // max =0;
         System.out.println("======");
         rightView(root,1);
     }

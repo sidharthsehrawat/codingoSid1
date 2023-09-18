@@ -22,7 +22,5 @@ public class BSTPairTarget {
                 return findTarget(root.left, k) || findTarget(root.right, k);
 
             }*/
-
         }
-
 }

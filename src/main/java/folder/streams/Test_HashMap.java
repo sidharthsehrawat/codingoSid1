@@ -21,10 +21,17 @@ public class Test_HashMap {
 
        // s1="ab";
         System.out.println(s1);
-       /* map.entrySet().stream().sorted(((o1, o2) -> {
+      /*  LinkedHashMap<Integer, Integer> res = map.entrySet().stream().sorted(((o1, o2) -> {
             return o1.getValue().compareTo(o2.getValue());
-        })).collect(Collectors.toMap(Map.Entry::getKey , Map.Entry::getValue,(o1,o2) -> o1, LinkedHashMap::new));
-        */
+        })).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new));*/
+
+        LinkedHashMap<Integer, Integer> ma = map.entrySet().stream()
+                .sorted(((o1, o2) -> {
+                    return o1.getValue().compareTo(o2.getValue());
+                }))
+                .collect(Collectors
+                        .toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new));
+        
 
         List<Map.Entry<Integer,Integer>> list = new LinkedList<>(map.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {

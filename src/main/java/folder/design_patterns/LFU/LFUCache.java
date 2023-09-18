@@ -43,7 +43,7 @@ public class LFUCache {
     }
 
     private void insertIntoLFU(int data) {
-        if()
+       // if()
     }
 
 }

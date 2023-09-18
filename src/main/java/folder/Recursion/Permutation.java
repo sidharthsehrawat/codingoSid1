@@ -9,12 +9,12 @@ public class Permutation {
       /*  int[] arr1 = {1,4,7};
         int[] arr2 = {2,3,5};
         mergeTwoArray(arr1,arr2);*/
-        // String str= "abc";
+         String str= "123";
         //permutation(str, 0, str.length() - 1);
-        // permutationBySubstring(str,"");
+         permutationBySubstring(str,"");
         int n = 3;
         List<String> list = getAllParentheses(n);
-        System.out.println(list);
+       // System.out.println(list);
     }
 
     private static List<String> getAllParentheses(int n) {
