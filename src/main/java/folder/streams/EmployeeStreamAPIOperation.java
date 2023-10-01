@@ -157,16 +157,18 @@ public class EmployeeStreamAPIOperation {
         System.out.println(res);
     }
 
+    // avg salary of each dept.
     private static void method7(List<Employee> employeeList) {
         Map<String, Double> res = employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.averagingDouble(Employee::getSalary)));
         System.out.println(res);
     }
 
+    // count no of employees in each dept.
     private static void method6(List<Employee> employeeList) {
         Map<String, Long> res = employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.counting()));
         System.out.println(res);
     }
-
+    // emp joined after 2023
     private static void method5(List<Employee> employeeList) {
         List<Employee> ans = employeeList.stream().filter(employee -> employee.getYearOfJoining() > 2023).sorted(Comparator.comparingInt(Employee::getYearOfJoining)).collect(Collectors.toList());
         System.out.println("employees joined after 2023 : " + ans);
@@ -174,6 +176,7 @@ public class EmployeeStreamAPIOperation {
         employeeList.stream().filter(employee -> employee.getYearOfJoining() > 2023).map(Employee::getName).forEach(System.out::println);
     }
 
+    // Highest paid employee in org. && Hihgest paid employee in male / female .
     private static void method4(List<Employee> employeeList) {
         Employee emp = employeeList.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))).get();
         System.out.println("Employee : " + emp);
@@ -184,6 +187,7 @@ public class EmployeeStreamAPIOperation {
         System.out.println("max Salary Employee : " + ans.get());
     }
 
+    // Avg age of male and female employees
     private static void method3(List<Employee> employeeList) {
         Map<String, Double> res3 = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingInt(Employee::getAge)));
         Double ans = employeeList.stream().filter(employee -> employee.getGender().equals("male")).collect(Collectors.averagingInt(Employee::getAge));
@@ -191,10 +195,12 @@ public class EmployeeStreamAPIOperation {
         System.out.println("Avg Age of Male and female combined " + res3);
     }
 
+    //print all dept in org.
     private static void method2(List<Employee> employeeList) {
         employeeList.stream().map(Employee::getDept).distinct().forEach(System.out::println);
     }
 
+    // how many male and female .
     private static void method1(List<Employee> employeeList) {
         Map<String, Long> res = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
         System.out.println("Males and Females :  " + res);

@@ -25,7 +25,7 @@ public class WordBreak {
         }
 
         for (int i = 0; i < str.length(); i++) {
-            String left = str.substring(0, i + 1);
+            String left = str.substring(0, i+1 );
             String right = str.substring(i + 1);
             if (set.contains(left)) {
                return checkWordBreak(right, set, ans + left + " ");

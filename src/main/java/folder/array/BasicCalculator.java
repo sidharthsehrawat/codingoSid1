@@ -6,7 +6,7 @@ public class BasicCalculator {
     public static void main(String[] args) {
         // String s = "3*2+2";
         String s = "23*2+1+3*2";
-        s = s.replaceAll(" ", "");
+        //s = s.replaceAll(" ", "");
         int res = calculate(s);
         System.out.println(res);
     }

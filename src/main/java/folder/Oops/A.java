@@ -1,6 +1,6 @@
 package folder.Oops;
 
-abstract class Aa {
+ abstract  class Aa {
 
 
     int a;
