@@ -18,67 +18,68 @@ public class MaxPathSum {
         /*
                 4
              1     2
-          1      8   7
-       1    2
+          1    6   8 7
+       3    2
 
         */
 
         TreeNode root = new TreeNode(4);
         root.left = new TreeNode(1);
         root.left.left = new TreeNode(1);
-        root.left.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(6);
+        root.left.left.left = new TreeNode(3);
         root.left.left.right = new TreeNode(2);
         root.right = new TreeNode(2);
         root.right.left = new TreeNode(8);
         root.right.right = new TreeNode(7);
         int maxPathSum = maxPathSum(root);
         //System.out.println( "maxPathSum : " + maxPathSum);
-        boolean hasPathSum = hasPathSumFun(root, 8, 0);
+        boolean hasPathSum = hasPathSumFun(root, 8);
         // System.out.println("HasPathSum : " + hasPathSum);
 
          int sum =allPathSumInteger(root, 0);
          // 4111 + 4112 + 428 + 427
-        System.out.println("sum is " + sum);
+        System.out.println("sum is " + sum );
+        System.out.println("List is :" + list);
+
+
+
     }
 
 
-
+static List<String > list = new ArrayList<>();
     private static int allPathSumInteger(TreeNode root, int path) {
         if (root == null) {
             return 0 ;
         }
-
         if (root.left == null && root.right == null) {
+            list.add(String.valueOf(path*10 + root.data));
            return path*10 + root.data;
         }
          int left  = allPathSumInteger(root.left, path * 10 + root.data);
          int right = allPathSumInteger(root.right, path * 10 + root.data);
-
          return left+ right;
     }
 
-    private static boolean hasPathSumFun(TreeNode root, int targetSum, int curr) {
+    private static boolean hasPathSumFun(TreeNode root, int targetSum) {
         if (root == null) {
             return false;
         }
-        if (targetSum - root.data == 0 && root.left ==null && root.right ==null) {
+        if (targetSum - root.data == 0 && root.left == null && root.right == null) {
             return true;
         }
-
-        boolean left = hasPathSumFun(root.left, targetSum - root.data, curr);
-        boolean right = hasPathSumFun(root.right, targetSum - root.data, curr);
+        boolean left = hasPathSumFun(root.left, targetSum - root.data);
+        boolean right = hasPathSumFun(root.right, targetSum - root.data);
         return left || right;
     }
 
     static class Res {
         public int val;
     }
-
     private static int maxPathSumUtil(TreeNode root, Res result) {
         if (root == null) {
             return 0;
         }
-
         int leftSum = maxPathSumUtil(root.left, result);
         int rightSum = maxPathSumUtil(root.right, result);
 
