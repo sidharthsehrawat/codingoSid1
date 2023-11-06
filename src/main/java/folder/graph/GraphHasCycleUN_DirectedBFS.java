@@ -39,6 +39,19 @@ public class GraphHasCycleUN_DirectedBFS {
             graph[i] = new ArrayList<>();
         }
 
+        /*
+
+
+        0 - 1
+        |   |
+        3 - 2
+        |   |
+        4 - 5
+        |  /
+        6
+
+        */
+
 
         graph[0].add(new Edge(0, 1, 10));
         graph[0].add(new Edge(0, 3, 10));
@@ -98,10 +111,10 @@ public class GraphHasCycleUN_DirectedBFS {
                         rem.psf = rem.psf + e.nbr;
                         System.out.println(rem.psf);
                         return true;
+
                     }
                 }
             }
-
         }
         return false;
     }

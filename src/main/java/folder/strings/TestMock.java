@@ -16,6 +16,11 @@ public class TestMock {
         // a b
         // c c b d a e a
         // a a b ans
+        
+        String str = "abab";
+        String[] res = str.split("a");
+        String re12 =res[0];
+        String re1 = res[1];
 
 
         Map<Character , Integer> map = new HashMap<>();

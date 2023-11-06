@@ -4,24 +4,6 @@ import java.util.Stack;
 
 public class DecodeString {
     public static void main(String[] args) {
-
-
-       /*
-
-       2 5 1 6 7 8
-
-
-       2 1 8 7 6 5
-       2 5 8 7 6 1
-
-
-
-
-
-
-       * */
-
-
         String str = "3[a]2[cd]";
         String str1 = "3[a2[c]]";
 

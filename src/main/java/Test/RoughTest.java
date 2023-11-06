@@ -1,10 +1,13 @@
 package Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RoughTest {
     public static void main(String[] args) {
         String str = "534976";
-
-
+        List<Integer> list = new ArrayList<>();
+        System.out.println(list);
 /*
 
  1. Next Permutation or Next Greater Element formed by using string digits.

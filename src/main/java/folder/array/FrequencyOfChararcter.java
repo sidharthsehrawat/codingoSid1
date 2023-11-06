@@ -14,14 +14,6 @@ public class FrequencyOfChararcter {
              }
          }
 
-         for(int i=0;i<res.length;i++){
-             if(res[i]>0){
-                // System.out.println( res[i]);
-             }
-
-         }
-
-
         for(int i=0;i<s.length();i++){
            char ch =s.charAt(i);
            if(res[ch-'A']>0){

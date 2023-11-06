@@ -10,15 +10,6 @@ public class DecodedString {
     public static void main(String[] args) {
         String s = "leet2code3";
         // leetleetcode leetleetcodeleet leetcode
-        Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        StringBuilder sb = new StringBuilder();
-      while(!stack.isEmpty()){
-          sb.append(stack.pop());
-      }
-        sb.reverse().toString();
         int k =20;
         String res= getres (s,k);
         System.out.println(res);

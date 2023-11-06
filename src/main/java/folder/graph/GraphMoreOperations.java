@@ -33,6 +33,18 @@ public class GraphMoreOperations {
         }
     }
 
+    /*
+
+
+
+    0 - 3 - 4 - 5
+    |   |   |  /
+    1 - 2 - 6
+
+
+
+    */
+
 
     public static void main(String[] args) {
         int vertex = 7; // 0 1 2 3 4 5 6.
@@ -54,6 +66,7 @@ public class GraphMoreOperations {
 
         graph[2].add(new Edge(2, 1, 10));
         graph[2].add(new Edge(2, 3, 10));
+         graph[2].add(new Edge(2, 6, 10));
 
         graph[4].add(new Edge(4, 3, 10));
         graph[4].add(new Edge(4, 5, 10));
@@ -64,6 +77,7 @@ public class GraphMoreOperations {
 
         graph[6].add(new Edge(6, 5, 10));
         graph[6].add(new Edge(6, 4, 10));
+        graph[6].add(new Edge(6, 2, 10));
         int source = 0;
         int destination = 6;
         String psf = "";

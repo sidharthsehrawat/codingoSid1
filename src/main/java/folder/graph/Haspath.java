@@ -16,7 +16,6 @@ public class Haspath {
         }
     }
 
-
     public static void main(String[] args) {
         int vertex = 7; // 0 1 2 3 4 5 6.
         ArrayList<Edge>[] graph = new ArrayList[vertex];
@@ -53,9 +52,7 @@ public class Haspath {
         boolean res = hasPath(graph, source, destination, visited);
         System.out.println("result is : " + res);
     }
-
     private static boolean hasPath(ArrayList<Edge>[] graph, int source, int destination, boolean[] visited) {
-
         if (source == destination) {
             return true;
         }
@@ -72,8 +69,6 @@ public class Haspath {
         }
         return false;
     }
-
-
 }
 
 

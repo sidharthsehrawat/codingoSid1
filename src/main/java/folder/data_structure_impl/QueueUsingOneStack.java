@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class QueueUisngOneStack {
+public class QueueUsingOneStack {
     private static Stack<Integer> stack = new Stack<>();
     private static List<Integer> list = new ArrayList<>();
 

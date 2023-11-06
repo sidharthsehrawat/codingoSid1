@@ -29,7 +29,7 @@ public class DiceTargetSum {
             return 0;
         }
 
-        if(mem[d][target]!=null ){
+        if(mem[d][target]!=null){
             return mem[d][target];
         }
         int count = 0;

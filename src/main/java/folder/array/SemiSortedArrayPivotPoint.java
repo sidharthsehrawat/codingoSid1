@@ -25,34 +25,16 @@ public class SemiSortedArrayPivotPoint {
     // Algo : start > mid > end  (start= mid , end = end )
     // Algo : start < mid < end  (start= start , end = mid )  ==
     // Algo : start > mid < end  (start= mid , end = end )
-    private static int getFuntion(int[] arr, int start, int end) {
+    private static int getFuntion(int[] arr, int lo, int hi) {
         // base condition
-        if (start <= end) {
-            int mid = (start + end) / 2;
-
-            if (mid == start) {
-                return mid;
-            }
-            //
-            if (arr[mid] > arr[start] && arr[mid] < arr[end]) {
-                return getFuntion(arr, start, mid);
-            }
-
-            if (arr[mid] > arr[start] && arr[mid] > arr[end]) {
-                return getFuntion(arr, mid, end);
-            }
-
-            if (arr[mid] < arr[start] && arr[mid] > arr[end]) {
-                return getFuntion(arr, start, mid);
-            }
-
-            if (arr[mid] < arr[start] && arr[mid] < arr[end]) {
-                return getFuntion(arr, mid, end);
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            if(arr[mid] < arr[hi]){
+                hi = mid;
+            }else {
+                lo = mid+1;
             }
         }
-
-        return -1;
+        return arr[hi];
     }
-
-
 }

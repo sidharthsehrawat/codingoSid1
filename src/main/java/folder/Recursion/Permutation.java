@@ -11,9 +11,9 @@ public class Permutation {
         mergeTwoArray(arr1,arr2);*/
          String str= "123";
         //permutation(str, 0, str.length() - 1);
-         permutationBySubstring(str,"");
+         permutationBySubstring(str,"", 3);
         int n = 3;
-        List<String> list = getAllParentheses(n);
+       // List<String> list = getAllParentheses(n);
        // System.out.println(list);
     }
 
@@ -41,18 +41,24 @@ public class Permutation {
         return list;
     }
 
-    private static void permutationBySubstring(String str, String psf) {
+    private static int count= 0;
+    private static void permutationBySubstring(String str, String psf, int k) {
 
         if (str.length() == 0) {
             System.out.println(psf);
+            count++;
+
+            if(count ==  3){
+                System.out.println("kth Permutation = " +psf);
+            }
         }
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            String lpart = str.substring(0, i);
-            String rpart = str.substring(i + 1);
+            String lpart = str.substring(0, i); // a
+            String rpart = str.substring(i + 1); //bc
             String ros = lpart + rpart;
-            permutationBySubstring(ros, psf + ch);
+            permutationBySubstring(ros, psf + ch, k);
         }
     }
 

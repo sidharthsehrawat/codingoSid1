@@ -35,9 +35,9 @@ public class MCQ {
         }  //op = 120 200 14 , 016 is octal number
 */
 
-/*
-        int ++a = 100;
-        System.out.println(++a);*/
+
+        int a = 100;
+        System.out.println(++a);
 
 
 

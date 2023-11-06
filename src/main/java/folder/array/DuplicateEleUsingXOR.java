@@ -1,9 +1,6 @@
 package folder.array;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class Main {
+public class DuplicateEleUsingXOR {
     public static void main(String[] args) {
         int arr[] ={1,2,3,4,5,7,8,9,10};
         int xor = 0;
