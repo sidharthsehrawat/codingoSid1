@@ -2,9 +2,11 @@ package folder.DP;
 
 public class StairsDP {
     public static void main(String[] args) {
-        /*int stairs = 4;
-        int count = getTotalStairsPathDP(stairs);
-        System.out.println(count);*/
+        String str = "abc";
+        String sub = str.substring(1,3);
+        int stairs = 3;
+        //int count = getTotalStairsPathDP(stairs);
+        //System.out.println(count);
 
       /*  int stairs =7;
         int minStep = getMinStepsDP123(stairs);

@@ -1,4 +1,4 @@
-package folder.auction;
+package folder1.auction;
 
 public interface AuctionHandler {
 

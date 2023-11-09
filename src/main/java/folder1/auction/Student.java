@@ -1,4 +1,4 @@
-package folder.auction;
+package folder1.auction;
 
 import java.util.List;
 

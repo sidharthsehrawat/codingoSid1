@@ -30,11 +30,14 @@ public class LRUCache {
             } else {
                 int last = deque.removeLast();
                 search.remove(last);
+                search.add(data);
                 deque.push(data);
             }
         } else {
-            deque.remove(data);
-            deque.push(data);
+            if (deque.size() < CACHE_SIZE) {
+                deque.push(data);
+            }
+
         }
 
     }
@@ -44,7 +47,7 @@ public class LRUCache {
         lruCache.insert(1);
         lruCache.insert(2);
         lruCache.insert(3);
-        lruCache.insert(6);
+        lruCache.insert(4);
 
         lruCache.insert(5);
         lruCache.display();
