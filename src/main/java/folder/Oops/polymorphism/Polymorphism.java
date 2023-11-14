@@ -1,5 +1,20 @@
 package folder.Oops.polymorphism;
 
+class X {
+    protected int a;
+
+    protected void m1() {
+        System.out.println("m1() of X lcass");
+    }
+}
+
+class Y extends X {
+    protected int a;
+    protected void m1() {
+        System.out.println("m2() of Y lcass");
+    }
+}
+
 class Parent {
     public Parent() {
 
@@ -23,6 +38,7 @@ class Child extends Parent {
     public Child() {
         System.out.println("Child Constructor");
     }
+
     int i = 2;
     static int j = 2;
     String str = "de";
@@ -30,12 +46,13 @@ class Child extends Parent {
     public void method(int b) {
         System.out.println("child: " + b);
     }
+
     public void getString() {
-        this.i =  21;
+        this.i = 21;
         System.out.println("child val i : " + i);
         super.str = "abcChanged";
         int ivalue = super.i = 3;
-        System.out.println( "parent value changed :" + ivalue);
+        System.out.println("parent value changed :" + ivalue);
         super.getString();
         System.out.println("Child getString called " + str + " i :" + i + " j: " + j);
     }
@@ -67,6 +84,19 @@ class Child1 extends Child {
 
 public class Polymorphism {
     public static void main(String[] args) {
+        X xob = new X();
+        xob.a = 100;
+        xob.m1();
+
+        Y yob = new Y();
+        yob.a = 2;
+        yob.m1();
+
+        X obxy = new Y();
+        obxy.m1();
+
+
+
         Child child = new Child();
         //   System.out.println(child.i); // 2
         //   System.out.println(Child.j);// 2

@@ -10,7 +10,7 @@ public class Factorial {
         int stairs = 4;
         // printNum(num);
         // factorial(num);
-        fibonaaci(num);
+       // fibonaaci(num);
         int[] dp = new int[10];
         for (int i = 0; i < num; i++) {
             dp[i] = 0;
@@ -29,8 +29,15 @@ public class Factorial {
         //  printStairsPath(stairs,"");
 
 
-        List<String> list = getSubSeq("heap");
-        System.out.println(list);
+        List<String> list = getSubSeq("rabbbit");
+        int count =0 ;
+        for(String s : list){
+            if(s.equals("rabbit")){
+                System.out.println(s);
+                count++;
+            }
+        }
+        System.out.println(count );
 
         // printSubSeq("abc","");
 
