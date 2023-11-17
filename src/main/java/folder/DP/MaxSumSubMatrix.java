@@ -1,9 +1,9 @@
-package your;
+package folder.DP;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestVL {
+public class MaxSumSubMatrix {
     public static void main(String[] args) {
         int[][] mat = {
                 {0, -2, -7, 0},
