@@ -55,7 +55,7 @@ public class MeetingRooms {
         for (int k = 0; k < meetingList.size(); k++) {
             Meeting m = meetingList.get(k);
             if (m.start > endTime) {
-                result = result + 1;
+                result ++;
                 endTime = m.end;
                 System.out.println("" + (k + 1));
             }
