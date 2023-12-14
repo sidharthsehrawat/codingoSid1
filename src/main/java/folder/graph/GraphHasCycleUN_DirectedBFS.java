@@ -111,7 +111,6 @@ public class GraphHasCycleUN_DirectedBFS {
                         rem.psf = rem.psf + e.nbr;
                         System.out.println(rem.psf);
                         return true;
-
                     }
                 }
             }

@@ -6,10 +6,10 @@ import java.util.List;
 public class MaxSumSubMatrix {
     public static void main(String[] args) {
         int[][] mat = {
-                {0, -2, -7, 0},
-                {9, 2, -6, 2},
-                {-4, 1, -4, 1},
-                {-1, 8, 0, -2}};
+                {0, -2, -7,  0},
+                {9,  2, -6,  2},
+                {-4, 1, -4,  1},
+                {-1, 8,  0, -2}};
         // output =  15
         List<List<Integer>> list = maxSumSubmatrix(mat);
         System.out.println(list);
