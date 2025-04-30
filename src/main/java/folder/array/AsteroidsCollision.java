@@ -17,6 +17,7 @@ public class AsteroidsCollision {
         for (int astroid : arr) {
             boolean flag = true;
             while (!stack.isEmpty() && astroid < 0 && stack.peek() > 0) {
+
                 if (-astroid > stack.peek()) {
                     stack.pop();
                 } else if (-astroid < stack.peek()) {

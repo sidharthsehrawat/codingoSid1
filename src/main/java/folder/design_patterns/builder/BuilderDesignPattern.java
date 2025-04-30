@@ -1,4 +1,4 @@
-package folder.design_patterns;
+package folder.design_patterns.builder;
 class Student{
     private int roll;
     private String name;

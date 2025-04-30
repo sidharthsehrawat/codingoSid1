@@ -1,5 +1,7 @@
 package folder.trees;
 
+import sun.reflect.generics.tree.Tree;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class MaxPathSum {
         /*
                 4
              1     2
-          1    6   8 7
+          1    6 8   7
        3    2
 
         */
@@ -32,6 +34,13 @@ public class MaxPathSum {
         root.right = new TreeNode(2);
         root.right.left = new TreeNode(8);
         root.right.right = new TreeNode(7);
+        TreeNode node = root.right.left;
+        int k =1;
+        String path ="";
+        int ans =-1;
+        int kthancestor=  kthAncestor(root,k, path,node, ans);
+        System.out.println("ans " + kthancestor);
+        /*
         int maxPathSum = maxPathSum(root);
         //System.out.println( "maxPathSum : " + maxPathSum);
         boolean hasPathSum = hasPathSumFun(root, 8);
@@ -42,12 +51,34 @@ public class MaxPathSum {
         System.out.println("sum is " + sum );
         System.out.println("List is :" + list);
 
-
+*/
 
     }
 
+    private static int kthAncestor(TreeNode root, int k,String path, TreeNode node, int ans) {
+        if(root ==null){
+            return -1;
+        }
 
-static List<String > list = new ArrayList<>();
+        if(root == node){
+            if(path.length()<k){
+                System.out.println("ancestor not exist");
+                return -1;
+            }else {
+                ans  = Integer.parseInt(String.valueOf(path.charAt(path.length()-(k))));
+                System.out.println("ans is " + Integer.parseInt(String.valueOf(path.charAt(path.length()-(k)))));
+                return ans;
+            }
+        }
+
+        kthAncestor(root.left, k, path+root.data,node, ans);
+        kthAncestor(root.right, k, path+root.data, node, ans);
+
+        return ans;
+    }
+
+
+    static List<String > list = new ArrayList<>();
     private static int allPathSumInteger(TreeNode root, int path) {
         if (root == null) {
             return 0 ;
