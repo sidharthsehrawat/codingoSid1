@@ -102,52 +102,41 @@ public class EmployeeStreamAPIOperation {
         //method19 (employeeList);
 
         // add list of employees into map
-        method20(employeeList);
+        // method20(employeeList);
     }
 
     // add list of employees into map
     private static void method20(List<Employee> employeeList) {
-       Map<String, Employee> map =  employeeList.stream().distinct().collect(Collectors.toMap(Employee::getName, Function.identity()));
-        System.out.println(map);
+
     }
 
     // emp count working in each dept
     private static void method17(List<Employee> employeeList) {
-      Map<String,Long> res =  employeeList.stream().collect(Collectors.groupingBy(Employee::getDept , Collectors.counting()));
-        System.out.println(res);
+
     }
 
     // max salary emp in each dept .
     private static void method16(List<Employee> employeeList) {
-       Map<String, Optional<Employee>> emp= employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
-        System.out.println(emp);
+
     }
 
     // oldest emp in org.
     private static void method15(List<Employee> employeeList) {
-       Employee emp = employeeList.stream().collect(Collectors.minBy(Comparator.comparing(Employee::getYearOfJoining))).get();
-        System.out.println(emp);
+
     }
 
     // Separate the employees whose age is below 6.
     private static void method14(List<Employee> employeeList) {
-        Predicate<Employee> predicate = e ->e.getAge() < 6;
-        Map<Boolean, List<Employee>> emp = employeeList.stream().collect(Collectors.partitioningBy(predicate));
-        System.out.println(emp);
+
     }
 
     // Avg salary and whole salary in organization.
     private static void method13(List<Employee> employeeList) {
-        DoubleSummaryStatistics statistics = employeeList.stream().collect(Collectors.summarizingDouble(Employee::getSalary));
-       double wholeSalary =  statistics.getSum();
-        System.out.println(wholeSalary);
-       double avgSalary= statistics.getAverage();
-        System.out.println(avgSalary);
+
     }
 
     private static void method19(List<Employee> employeeList) {
-        Map<String, Optional<Employee>> emp = employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.minBy(Comparator.comparing(Employee::getSalary))));
-        System.out.println(emp);
+
     }
 
     // All emp names in each dept.
@@ -157,80 +146,58 @@ public class EmployeeStreamAPIOperation {
 
     // Avg salary of male and female employee.
     private static void method11(List<Employee> employeeList) {
-      Map<String, Double> emp=  employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingDouble(Employee::getSalary)));
-        System.out.println(emp);
+
     }
 
     // how many males and females in JAVA and MECH.
     private static void method10(List<Employee> employeeList) {
-        Predicate<Employee> predicate = e -> e.getDept().equals("JAVA") || e.getDept().equals("MECH");
-        Map<String , Long> emp =  employeeList.stream().filter(predicate).collect(Collectors.groupingBy(Employee::getGender,Collectors.counting()));
-        System.out.println(emp);
+
     }
 
     // most work experience in org.
     private static void method9(List<Employee> employeeList) {
-      Employee  emp = employeeList.stream().collect(Collectors.minBy(Comparator.comparing(Employee::getYearOfJoining))).get();
-        System.out.println(emp);
+
     }
 
     // young emp in JAVA dept.
     private static void method8(List<Employee> employeeList) {
-        Predicate<Employee> predicate = e -> e.getDept().equals("JAVA");
-       Employee e =  employeeList.stream().filter(predicate).collect(Collectors.minBy(Comparator.comparingInt(Employee::getAge))).get();
-        System.out.println(e);
+
     }
 
     // avg salary of each dept.
     private static void method7(List<Employee> employeeList) {
-       Map<String, Double> res = employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.averagingDouble(Employee::getSalary)));
-        System.out.println(res);
+
     }
 
     // count no of employees in each dept.
     private static void method6(List<Employee> employeeList) {
-       Map<String,Long> res =  employeeList.stream().collect(Collectors.groupingBy(Employee::getDept,Collectors.counting()));
-        System.out.println(res);
+
     }
 
     // emp joined after 2023
     private static void method5(List<Employee> employeeList) {
-        Predicate<Employee> predicate = e -> e.getYearOfJoining() > 2023;
-        List<String> res= employeeList.stream().filter(predicate).map(e ->e.getName()).collect(Collectors.toList());
-        System.out.println(res);
+
     }
 
     // Highest paid employee in org. && Hihgest paid employee in male / female .
     private static void method4(List<Employee> employeeList) {
-       Employee res = employeeList.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))).get();
-        System.out.println(res);
-        // or
 
-      Employee  emp = employeeList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).findFirst().get();
-      System.out.println(emp);
     }
 
     // Avg age of male and female employees
     private static void method3(List<Employee> employeeList) {
-     Map<String, Double>  res = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender , Collectors.averagingInt(Employee::getAge)));
-     System.out.println(res);
+
     }
 
     //print all dept in org.
     private static void method2(List<Employee> employeeList) {
-        List<String> res = employeeList.stream().map(e -> e.getDept()).distinct().collect(Collectors.toList());
-        System.out.println(res);
+
     }
 
     // how many male and female .
     private static void method1(List<Employee> employeeList) {
-        Map<String, List<Employee>> emp = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender));
-        System.out.println(emp);
+
     }
-
-
-
-
 
 }
 
@@ -367,6 +334,137 @@ public class EmployeeStreamAPIOperation {
         Map<String, Long> res = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
         System.out.println("Males and Females :  " + res);
     }
+
+
+*/
+
+// ===========================================
+
+
+/*
+
+// add list of employees into map
+private static void method20(List<Employee> employeeList) {
+    Map<String, Employee> map =  employeeList.stream().distinct().collect(Collectors.toMap(Employee::getName, Function.identity()));
+    System.out.println(map);
+}
+
+// emp count working in each dept
+private static void method17(List<Employee> employeeList) {
+    Map<String,Long> res =  employeeList.stream().collect(Collectors.groupingBy(Employee::getDept , Collectors.counting()));
+    System.out.println(res);
+}
+
+// max salary emp in each dept .
+private static void method16(List<Employee> employeeList) {
+    Map<String, Optional<Employee>> emp= employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+    System.out.println(emp);
+}
+
+// oldest emp in org.
+private static void method15(List<Employee> employeeList) {
+    Employee emp = employeeList.stream().collect(Collectors.minBy(Comparator.comparing(Employee::getYearOfJoining))).get();
+    System.out.println(emp);
+}
+
+// Separate the employees whose age is below 6.
+private static void method14(List<Employee> employeeList) {
+    Predicate<Employee> predicate = e ->e.getAge() < 6;
+    Map<Boolean, List<Employee>> emp = employeeList.stream().collect(Collectors.partitioningBy(predicate));
+    System.out.println(emp);
+}
+
+// Avg salary and whole salary in organization.
+private static void method13(List<Employee> employeeList) {
+    DoubleSummaryStatistics statistics = employeeList.stream().collect(Collectors.summarizingDouble(Employee::getSalary));
+    double wholeSalary =  statistics.getSum();
+    System.out.println(wholeSalary);
+    double avgSalary= statistics.getAverage();
+    System.out.println(avgSalary);
+}
+
+private static void method19(List<Employee> employeeList) {
+    Map<String, Optional<Employee>> emp = employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.minBy(Comparator.comparing(Employee::getSalary))));
+    System.out.println(emp);
+}
+
+// All emp names in each dept.
+private static void method12(List<Employee> employeeList) {
+    // to-do
+}
+
+// Avg salary of male and female employee.
+private static void method11(List<Employee> employeeList) {
+    Map<String, Double> emp=  employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingDouble(Employee::getSalary)));
+    System.out.println(emp);
+}
+
+// how many males and females in JAVA and MECH.
+private static void method10(List<Employee> employeeList) {
+    Predicate<Employee> predicate = e -> e.getDept().equals("JAVA") || e.getDept().equals("MECH");
+    Map<String , Long> emp =  employeeList.stream().filter(predicate).collect(Collectors.groupingBy(Employee::getGender,Collectors.counting()));
+    System.out.println(emp);
+}
+
+// most work experience in org.
+private static void method9(List<Employee> employeeList) {
+    Employee  emp = employeeList.stream().collect(Collectors.minBy(Comparator.comparing(Employee::getYearOfJoining))).get();
+    System.out.println(emp);
+}
+
+// young emp in JAVA dept.
+private static void method8(List<Employee> employeeList) {
+    Predicate<Employee> predicate = e -> e.getDept().equals("JAVA");
+    Employee e =  employeeList.stream().filter(predicate).collect(Collectors.minBy(Comparator.comparingInt(Employee::getAge))).get();
+    System.out.println(e);
+}
+
+// avg salary of each dept.
+private static void method7(List<Employee> employeeList) {
+    Map<String, Double> res = employeeList.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.averagingDouble(Employee::getSalary)));
+    System.out.println(res);
+}
+
+// count no of employees in each dept.
+private static void method6(List<Employee> employeeList) {
+    Map<String,Long> res =  employeeList.stream().collect(Collectors.groupingBy(Employee::getDept,Collectors.counting()));
+    System.out.println(res);
+}
+
+// emp joined after 2023
+private static void method5(List<Employee> employeeList) {
+    Predicate<Employee> predicate = e -> e.getYearOfJoining() > 2023;
+    List<String> res= employeeList.stream().filter(predicate).map(e ->e.getName()).collect(Collectors.toList());
+    System.out.println(res);
+}
+
+// Highest paid employee in org. && Hihgest paid employee in male / female .
+private static void method4(List<Employee> employeeList) {
+    Employee res = employeeList.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))).get();
+    System.out.println(res);
+    // or
+
+    Employee  emp = employeeList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).findFirst().get();
+    System.out.println(emp);
+}
+
+// Avg age of male and female employees
+private static void method3(List<Employee> employeeList) {
+    Map<String, Double>  res = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender , Collectors.averagingInt(Employee::getAge)));
+    System.out.println(res);
+}
+
+//print all dept in org.
+private static void method2(List<Employee> employeeList) {
+    List<String> res = employeeList.stream().map(e -> e.getDept()).distinct().collect(Collectors.toList());
+    System.out.println(res);
+}
+
+// how many male and female .
+private static void method1(List<Employee> employeeList) {
+    Map<String, List<Employee>> emp = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender));
+    System.out.println(emp);
+}
 
 
 */
