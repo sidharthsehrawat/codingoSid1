@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class WordBreak {
     public static void main(String[] args) {
-        String str = "thistsisSid";
+        String str = "hissisSid";
         Set<String> set = new HashSet<>();
         set.add("his");
         set.add("sis");

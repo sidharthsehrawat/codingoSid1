@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MeetingRooms {
     @Data
@@ -35,6 +36,8 @@ public class MeetingRooms {
         for (int i = 0; i < start.length; i++) {
             meetingList.add(new Meeting(start[i], end[i], i + 1));
         }
+
+        meetingList.sort(Comparator.comparing(Meeting::getEnd).thenComparing(Meeting::getPos));
 
         Collections.sort(meetingList, new Comparator<Meeting>() {
             @Override

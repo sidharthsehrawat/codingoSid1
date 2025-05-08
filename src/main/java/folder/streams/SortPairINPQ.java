@@ -22,17 +22,14 @@ public class SortPairINPQ {
         list.add(p1);
         list.add(p2);
         list.add(p3);
-        Collections.sort(list, new Comparator<Pair>() {
-
-            public int compare(Pair o1, Pair o2) {
-               if(o1.start > o2.start){
-                   return 1;
-               }else if(o1.start < o2.start){
-                   return -1;
-               }else {
-                   return 0;
-               }
-            }
+        Collections.sort(list, (o1, o2) -> {
+           if(o1.start > o2.start){
+               return 1;
+           }else if(o1.start < o2.start){
+               return -1;
+           }else {
+               return 0;
+           }
         });
 
         PriorityQueue<Pair> pq = new PriorityQueue<>((o1, o2) -> {

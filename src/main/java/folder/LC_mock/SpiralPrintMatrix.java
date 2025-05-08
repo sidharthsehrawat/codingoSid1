@@ -3,7 +3,7 @@ package folder.LC_mock;
 public class SpiralPrintMatrix {
 
     public static void main(String[] args) {
-        generateMatrix(1);
+        generateMatrix(4);
     }
 
     private static int counter = 1;
