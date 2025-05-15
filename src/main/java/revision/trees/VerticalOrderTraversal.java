@@ -46,7 +46,6 @@ public class VerticalOrderTraversal {
 
     }
 
-
     private static void verticalOrderTraversal(TreeNode root) {
         if(root == null) return;
 
@@ -72,11 +71,8 @@ public class VerticalOrderTraversal {
             }
         }
 
-        List<List<Integer>> list = map.values().stream().map(inner->inner.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList()))
+        List<List<Integer>> list = map.values().stream().map(inner->inner.stream().sorted().collect(Collectors.toList()))
                 .collect(Collectors.toList());
-
-
         System.out.println("ans = " + list);
     }
-
 }
