@@ -28,7 +28,6 @@ public class RootToNodePath {
         root.right = new TreeNode(3);
         root.right.right = new TreeNode(7);
         root.right.right.right = new TreeNode(8);
-
         root.left.right = new TreeNode(5);
         root.left.right.right = new TreeNode(8);
         root.right.left = new TreeNode(6);
