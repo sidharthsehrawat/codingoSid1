@@ -19,7 +19,7 @@ public class CountIslandInGraph {
         int count = 0;
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
-                if (mat[i][j] == 0 && visited[i][j] == false) {
+                if (mat[i][j] == 0 && !visited[i][j]) {
                     countComponent(mat, visited, i, j);
                     count++;
                 }
@@ -30,7 +30,7 @@ public class CountIslandInGraph {
 
     private static void countComponent(int[][] mat, boolean[][] visited, int i, int j) {
 
-        if (i >= mat.length || i < 0 || j >= mat[i].length || j < 0 || visited[i][j] == true || mat[i][j] == 1) {
+        if (i >= mat.length || i < 0 || j >= mat[i].length || j < 0 || visited[i][j] || mat[i][j] == 1) {
             return;
         }
         visited[i][j] = true;

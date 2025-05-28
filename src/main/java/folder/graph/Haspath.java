@@ -60,7 +60,7 @@ public class Haspath {
         visited[source] = true;
 
         for (Edge edge : graph[source]) {
-            if (visited[edge.nbr] == false) {
+            if (!visited[edge.nbr]) {
                 boolean hasnbrPath = hasPath(graph, edge.nbr, destination, visited);
                 if (hasnbrPath) {
                     return true;

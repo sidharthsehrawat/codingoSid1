@@ -37,7 +37,7 @@ public class Factorial {
                 count++;
             }
         }
-        System.out.println(count );
+        System.out.println(count);
 
         // printSubSeq("abc","");
 

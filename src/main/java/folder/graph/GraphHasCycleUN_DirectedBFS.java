@@ -97,17 +97,17 @@ public class GraphHasCycleUN_DirectedBFS {
     private static boolean hasCycle(ArrayList<Edge>[] graph, int src, boolean[] visited) {
         Queue<Pair> queue = new LinkedList<>();
         queue.add(new Pair(src, -1, src + ""));
-        while (queue.size() > 0) {
+        while (!queue.isEmpty()) {
             Pair rem = queue.poll();
             visited[rem.v] = true;
 
             for (Edge e : graph[rem.v]) {
-                if (visited[e.nbr] == false) {
+                if (!visited[e.nbr]) {
                     queue.add(new Pair(e.nbr, e.src, rem.psf + e.nbr));
                     visited[e.nbr] = true;
                     rem.psf = rem.psf + e.nbr;
                 } else {
-                    if (visited[e.nbr] == true && rem.prev != -1 && rem.prev != e.nbr) {
+                    if (visited[e.nbr] && rem.prev != -1 && rem.prev != e.nbr) {
                         rem.psf = rem.psf + e.nbr;
                         System.out.println(rem.psf);
                         return true;

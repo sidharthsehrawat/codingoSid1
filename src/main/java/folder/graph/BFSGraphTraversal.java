@@ -63,17 +63,17 @@ public class BFSGraphTraversal {
         queue.add(new Pair(0, 0 + ""));
         boolean[] visited = new boolean[vertex];
 
-        while (queue.size() > 0) {
+        while (!queue.isEmpty()) {
             Pair rem = queue.poll();
 
-            if (visited[rem.v] == true) {
+            if (visited[rem.v]) {
                 continue;
             }
             visited[rem.v] = true;
             System.out.println(rem.v + "@" + rem.psf);
 
             for (Edge e : graph[rem.v]) {
-                if (visited[e.nbr] == false) {
+                if (!visited[e.nbr]) {
                     queue.add(new Pair(e.nbr, rem.psf + e.nbr));
                 }
             }

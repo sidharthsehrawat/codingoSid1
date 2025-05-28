@@ -27,26 +27,26 @@ public class MatrixGraphBiDirectionHasPathLeetcodeStyle {
     public static boolean validPath(int n, int[][] edges, int source, int destination) {
         boolean[] visited = new boolean[n];
         Map<Integer, Integer> map = new HashMap<>();
-        for (int r =0; r<edges.length ; r++){
+        for (int r = 0; r < edges.length; r++) {
             int src = edges[r][0];
-            if(map.containsKey(src)){
-                map.put(src, map.get(src)+1);
-            }else {
-                map.put(src,1);
+            if (map.containsKey(src)) {
+                map.put(src, map.get(src) + 1);
+            } else {
+                map.put(src, 1);
             }
         }
 
-        boolean result = helper(n, edges, source, destination, visited, map );
+        boolean result = helper(n, edges, source, destination, visited, map);
         return result;
 
     }
 
-    public static boolean helper(int n, int[][] edges, int source, int destination, boolean[] visited,Map<Integer, Integer> map) {
+    public static boolean helper(int n, int[][] edges, int source, int destination, boolean[] visited, Map<Integer, Integer> map) {
         if (source == destination) {
             return true;
         }
 
-        if(map.containsKey(source) && map.get(source)==1){
+        if (map.containsKey(source) && map.get(source) == 1) {
             visited[source] = true;
         }
 

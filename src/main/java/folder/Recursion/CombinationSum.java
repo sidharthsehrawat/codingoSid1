@@ -21,9 +21,7 @@ public class CombinationSum {
             if ( sum == target) {
                 System.out.println(list);
             }
-            return;
         }
-
 
         list.add(arr[index]);
         fun(arr, index+1, list, sum+ arr[index], target);
