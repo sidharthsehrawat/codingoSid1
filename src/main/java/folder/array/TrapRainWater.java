@@ -3,6 +3,9 @@ package folder.array;
 import java.util.*;
 public class TrapRainWater {
     public static void main(String[] args) {
+        int a = 9%5;
+        int b = 6%5;
+        int c = 5%5;
 
         List<Integer> input = Arrays.asList(0,1,0,2,1,0,1,3,2,1,2,1);
         int[] prevMax = new int[input.size()];
