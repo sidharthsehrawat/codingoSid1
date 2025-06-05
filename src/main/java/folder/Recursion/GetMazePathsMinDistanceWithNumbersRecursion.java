@@ -54,7 +54,7 @@ public class GetMazePathsMinDistanceWithNumbersRecursion {
             return list;
         }
 
-        List<String> hl = printNumPath(r, c + 1, mat, m, n);
+        List<String> hl = printNumPath(r,c + 1, mat, m, n);
         List<String> vl = printNumPath(r + 1, c, mat, m, n);
 
 
