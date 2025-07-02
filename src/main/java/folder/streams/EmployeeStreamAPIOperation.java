@@ -224,7 +224,7 @@ public class EmployeeStreamAPIOperation {
 
     // how many male and female .
     private static void method1(List<Employee> employeeList) {
-        Map<String, List<Employee>> emp = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender));
+        Map<String, Long> emp = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
         System.out.println(emp);
     }
 

@@ -25,12 +25,7 @@ public class SortListByStudentName {
             }
         });
 
-        Collections.sort(list, new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                return o1.getStudentName().compareTo(o2.getStudentName()) ;
-            }
-        });
+        Collections.sort(list, Comparator.comparing(Student::getStudentName));
 
         System.out.println(list);
     }
