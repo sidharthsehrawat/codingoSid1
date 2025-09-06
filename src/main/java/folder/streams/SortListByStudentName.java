@@ -16,6 +16,7 @@ public class SortListByStudentName {
         Student s2= new Student("Kid",3,"d2");
         Student s3= new Student("Mid",2,"d3");
         list.add(s1); list.add(s2); list.add(s3);
+        list.stream().sorted(Comparator.comparing(Student::getStudentName)).collect(Collectors.toList());
 
 
         Collections.sort(list, new Comparator<Student>() {

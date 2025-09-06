@@ -2,7 +2,7 @@ package folder.strings;
 
 public class LongestPalindromicSubstring {
     public static void main(String[] args) {
-        String s = "aaa"; // c
+        String s = "aaabba"; // c
         int res = countSubstrings(s);
         System.out.println(res);
 
@@ -14,19 +14,18 @@ public class LongestPalindromicSubstring {
         int size = s.length();
         boolean[][] dp = new boolean[size][size];
         String ans = "";
-        int count =0;
         for (int gap = 0; gap < size; gap++) {
             int i = 0;
             for (int j = gap; j < dp[0].length; j++) {
                 if (gap == 0) {
                     dp[i][j] = true;
                     ans = s.substring(i, j + 1);
-                    System.out.println(ans);
+                    //System.out.println(ans);
                 } else if (gap == 1) {
                     if (s.charAt(i) == s.charAt(j)) {
                         dp[i][j] = true;
                         ans = s.substring(i, j + 1);
-                        System.out.println(ans);
+                       // System.out.println(ans);
                     } else {
                         dp[i][j] = false;
                     }
@@ -35,18 +34,16 @@ public class LongestPalindromicSubstring {
                         if (dp[i + 1][j - 1] == true) {
                             dp[i][j] = true;
                             ans = s.substring(i, j + 1);
-                            System.out.println(ans);
+                           // System.out.println(ans);
                         } else {
                             dp[i][j] = false;
                         }
                     }
                 }
                 i++;
-
             }
         }
         return ans;
-
     }
 
 

@@ -3,6 +3,7 @@ package folder.streams;
 import javax.swing.text.html.parser.Entity;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test_HashMap {
     public static void main(String[] args) {
@@ -21,9 +22,7 @@ public class Test_HashMap {
 
        // s1="ab";
         System.out.println(s1);
-      /*  LinkedHashMap<Integer, Integer> res = map.entrySet().stream().sorted(((o1, o2) -> {
-            return o1.getValue().compareTo(o2.getValue());
-        })).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new));*/
+        LinkedHashMap<Integer, Integer> res = map.entrySet().stream().sorted((Map.Entry.comparingByValue())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new));
 
         LinkedHashMap<Integer, Integer> ma = map.entrySet().stream()
                 .sorted(((o1, o2) -> {

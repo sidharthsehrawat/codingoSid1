@@ -1,6 +1,5 @@
 package folder.data_structure_impl;
 
-import java.util.List;
 
 class HashMap<K, V> {
     private static final int DEFAULT_CAPACITY = 16;

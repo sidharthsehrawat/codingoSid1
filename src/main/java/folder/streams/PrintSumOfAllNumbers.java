@@ -8,6 +8,7 @@ public class PrintSumOfAllNumbers {
         List<Integer> list = Arrays.asList(1,2,3,4,5);
         // Sum of integers.
         Optional<Integer> sum = list.stream().reduce((a,b) -> a+b);
+        int sum1 = list.stream().mapToInt(Integer::intValue).sum();
         System.out.println("sum is : " + sum.get());
 
         // Avg of integers.
