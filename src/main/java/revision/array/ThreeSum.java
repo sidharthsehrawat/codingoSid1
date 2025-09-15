@@ -1,15 +1,12 @@
 package revision.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ThreeSum {
     public static void main(String[] args) {
         int[] arr = {-1, 0, 1, 2, -1, -4};
         List<List<Integer>> res = threeSum(arr);
         System.out.println(res);
-
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {

@@ -1,14 +1,18 @@
 package folder.design_patterns.rateLimiter.slidingWindow;
 
-import folder.design_patterns.rateLimiter.fixedWindow.FixedWindowRateLimiter;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SlidingWindowCounterRateLimiter {
-    private final int maxRequests;       // max requests allowed per window
-    private final long windowSizeInMs;   // window size in milliseconds
-    private final Map<String, Window> userWindows = new ConcurrentHashMap<>();
+
+    private final int maxRequests;
+    private final long windowSizeInMs;
+
+    // Replacing the Window class with 3 maps
+    private final Map<String, Long> userWindowKey = new ConcurrentHashMap<>();
+    private final Map<String, Integer> currentWindowCount = new ConcurrentHashMap<>();
+    private final Map<String, Integer> previousWindowCount = new ConcurrentHashMap<>();
 
     public SlidingWindowCounterRateLimiter(int maxRequests, long windowSizeInMs) {
         this.maxRequests = maxRequests;
@@ -17,57 +21,40 @@ public class SlidingWindowCounterRateLimiter {
 
     public boolean allowRequest(String userId) {
         long currentTime = System.currentTimeMillis();
-        long currentWindowKey = currentTime / windowSizeInMs;   // current window number
-        long previousWindowKey = currentWindowKey - 1;          // previous window number
+        long currentWindow = currentTime / windowSizeInMs;
+        long previousWindow = currentWindow - 1;
 
-        Window window = userWindows.get(userId);   // try to get user's window
+        Long lastWindow = userWindowKey.get(userId);
 
-        if (window == null) {                      // if not found
-            window = new Window(currentWindowKey);        // create a new one
-            userWindows.put(userId, window);       // save it in the map
-        }
-
-      //  synchronized (window) {
-            // if moved to a new window, reset counter
-            if (window.windowKey != currentWindowKey) {
-                if (window.windowKey == previousWindowKey) {
-                    // shift counters: previous → store old count
-                    window.prevCount = window.counter;
-                } else {
-                    // too old → discard
-                    window.prevCount = 0;
-                }
-                window.counter = 0;
-                window.windowKey = currentWindowKey;
-            }
-
-            // increment for current window
-            window.counter++;
-
-            // calculate weighted requests
-            long elapsedTimeInWindow = currentTime % windowSizeInMs; // how far into the current window we are
-            double weight = (double)(windowSizeInMs - elapsedTimeInWindow) / windowSizeInMs;
-
-            double estimatedCount = window.prevCount * weight + window.counter;
-
-            if (estimatedCount <= maxRequests) {
-                return true; // allowed
+        if (lastWindow == null || lastWindow != currentWindow) {
+            // Moved to a new window
+            if (lastWindow != null && lastWindow == previousWindow) {
+                // Shift current → previous
+                int prevCount = currentWindowCount.getOrDefault(userId, 0);
+                previousWindowCount.put(userId, prevCount);
             } else {
-                return false; // blocked
+                // Too old, discard previous
+                previousWindowCount.put(userId, 0);
             }
-       // }
-    }
 
-    private static class Window {
-        long windowKey;   // current window number
-        int counter;      // current window counter
-        int prevCount;    // previous window counter
-
-        Window(long windowKey) {
-            this.windowKey = windowKey;
-            this.counter = 0;
-            this.prevCount = 0;
+            // Reset current count
+            currentWindowCount.put(userId, 0);
+            userWindowKey.put(userId, currentWindow);
         }
+
+        // Increment current count
+        int currentCount = currentWindowCount.getOrDefault(userId, 0) + 1;
+        currentWindowCount.put(userId, currentCount);
+
+        // Weighted calculation
+        long elapsedTimeInWindow = currentTime % windowSizeInMs;
+        double weight = (double)(windowSizeInMs - elapsedTimeInWindow) / windowSizeInMs;
+
+        int prevCount = previousWindowCount.getOrDefault(userId, 0);
+
+        double estimatedCount = prevCount * weight + currentCount;
+
+        return estimatedCount <= maxRequests;
     }
 
     // Test
@@ -82,3 +69,4 @@ public class SlidingWindowCounterRateLimiter {
         }
     }
 }
+

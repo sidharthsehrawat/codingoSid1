@@ -1,5 +1,9 @@
 package revision.array;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class BinarySearch {
     public static void main(String[] args) {
         int target = 5;
