@@ -4,9 +4,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TokenBucketRateLimiter {
-    private final int maxTokens;          // bucket capacity
-    private final int refillRate;         // tokens added per second
-    private final Map<String, Bucket> userBuckets = new ConcurrentHashMap<>();
+
+    private final int maxTokens;   // bucket capacity
+    private final int refillRate;  // tokens added per second
+    private final Map<String, long[]> userBuckets = new ConcurrentHashMap<>();
+    // long[0] = tokens, long[1] = lastRefillTimestamp
 
     public TokenBucketRateLimiter(int maxTokens, int refillRate) {
         this.maxTokens = maxTokens;
@@ -16,49 +18,41 @@ public class TokenBucketRateLimiter {
     public boolean allowRequest(String userId) {
         long currentTime = System.currentTimeMillis();
 
-        // get or create bucket for user
-        Bucket bucket = userBuckets.computeIfAbsent(userId, k -> new Bucket(maxTokens, currentTime));
+        // 1. Get or create bucket for user
+        long[] bucket;
+        if (userBuckets.containsKey(userId)) {
+            bucket = userBuckets.get(userId);
+        } else {
+            bucket = new long[]{maxTokens, currentTime};
+            userBuckets.put(userId, bucket);
+        }
 
-       // synchronized (bucket) {
-            // refill tokens based on elapsed time
-            long elapsedTime = currentTime - bucket.lastRefillTimestamp;
-            int tokensToAdd = (int) ((elapsedTime / 1000.0) * refillRate);
+        // 2. Refill tokens based on elapsed time
+        long elapsedTime = currentTime - bucket[1];
+        int tokensToAdd = (int) ((elapsedTime / 1000.0) * refillRate);
+        if (tokensToAdd > 0) {
+            bucket[0] = Math.min(maxTokens, bucket[0] + tokensToAdd);
+            bucket[1] = currentTime;
+        }
 
-            if (tokensToAdd > 0) {
-                bucket.tokens = Math.min(maxTokens, bucket.tokens + tokensToAdd);
-                bucket.lastRefillTimestamp = currentTime;
-            }
-
-            // consume token if available
-            if (bucket.tokens > 0) {
-                bucket.tokens--;
-                return true;  // request allowed
-            } else {
-                return false; // request blocked
-            }
-       // }
-    }
-
-    private static class Bucket {
-        int tokens;                 // current tokens in bucket
-        long lastRefillTimestamp;   // last time we refilled tokens
-
-        Bucket(int tokens, long lastRefillTimestamp) {
-            this.tokens = tokens;
-            this.lastRefillTimestamp = lastRefillTimestamp;
+        // 3. Consume token if available
+        if (bucket[0] > 0) {
+            bucket[0]--;
+            return true;  // request allowed
+        } else {
+            return false; // request blocked
         }
     }
 
-    // Test
+    // ----------------- Test -----------------
     public static void main(String[] args) throws InterruptedException {
-        TokenBucketRateLimiter limiter = new TokenBucketRateLimiter(5, 5); // 5 tokens/sec
+        TokenBucketRateLimiter limiter = new TokenBucketRateLimiter(5, 5);
         String user = "user1";
 
         for (int i = 1; i <= 15; i++) {
             boolean allowed = limiter.allowRequest(user);
             System.out.println("Request " + i + " -> " + (allowed ? "ALLOWED" : "BLOCKED"));
-            Thread.sleep(200); // send requests every 200 ms
+            Thread.sleep(200);
         }
     }
 }
-
