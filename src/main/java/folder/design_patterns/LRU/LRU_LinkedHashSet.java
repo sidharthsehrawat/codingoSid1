@@ -1,6 +1,5 @@
 package folder.design_patterns.LRU;
 
-import sun.awt.image.ImageWatched;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -12,7 +11,7 @@ public class LRU_LinkedHashSet {
 
     public LRU_LinkedHashSet(int size) {
         this.CACHE_SIZE = size;
-        linkedHashSet = new LinkedHashSet<Integer>(3);
+        linkedHashSet = new LinkedHashSet<Integer>(size);
     }
 
     private void refer(int data) {
@@ -24,6 +23,9 @@ public class LRU_LinkedHashSet {
                linkedHashSet.remove(data1);
                linkedHashSet.add(data);
             }
+        }else { // already present in cache
+            linkedHashSet.remove(data);
+            linkedHashSet.add(data);
         }
     }
 

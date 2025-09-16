@@ -37,9 +37,7 @@ public class LRUCache {
             if (deque.size() < CACHE_SIZE) {
                 deque.push(data);
             }
-
         }
-
     }
 
     public static void main(String[] args) {
