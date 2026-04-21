@@ -1,10 +1,10 @@
-package your;
+package Test;
 
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Test {
+public class Test2 {
     public static void main(String[] args) {
         String s = "abcabcbb";
         int res = lengthOfLongestSubstring(s);

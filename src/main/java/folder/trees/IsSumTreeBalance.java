@@ -1,6 +1,5 @@
 package folder.trees;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public class IsSumTreeBalance {
     public static class TreeNode {

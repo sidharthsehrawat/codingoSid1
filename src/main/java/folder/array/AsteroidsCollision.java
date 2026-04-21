@@ -14,20 +14,20 @@ public class AsteroidsCollision {
         Stack<Integer> stack = new Stack<>();
 
         for (int asteroid : arr) {
-            boolean flag = true;
+            boolean asteroidAdded = true;
                 while (!stack.isEmpty() && stack.peek() > 0 && asteroid < 0) {
                     if (stack.peek() > -asteroid) {
-                        flag = false;
+                        asteroidAdded = false;
                         break;
                     } else if (stack.peek() < -asteroid) {
                         stack.pop();
                     } else {
                         stack.pop();
-                        flag = false;
+                        asteroidAdded = false;
                         break;
                     }
                 }
-            if (flag) {
+            if (asteroidAdded) {
                 stack.push(asteroid);
             }
         }

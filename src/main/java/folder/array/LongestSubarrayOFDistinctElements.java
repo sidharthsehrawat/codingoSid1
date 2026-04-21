@@ -1,11 +1,15 @@
 package folder.array;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class LongestSubarrayOFDistinctElements {
     public static void main(String[] args) {
         int[] arr = {1,5,3,5,2,3,4,1};
         // OP:      [5,2,3,4,1] length = 5
+        Set<Integer> set = new HashSet<>();
+        int start = 0;
     }
 }
 

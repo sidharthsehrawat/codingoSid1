@@ -1,4 +1,4 @@
-package your;
+package Test;
 
 public class MaxProductSumArray {
     public static void main(String[] args) {

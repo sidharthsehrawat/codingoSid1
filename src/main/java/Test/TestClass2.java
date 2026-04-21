@@ -1,4 +1,4 @@
-package your;
+package Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -14,7 +14,7 @@ class MyTask implements Callable<Integer> {
     }
 }
 
-public class TestClass {
+public class TestClass2 {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // Create 3 FutureTasks
         FutureTask<Integer> future1 = new FutureTask<>(new MyTask());

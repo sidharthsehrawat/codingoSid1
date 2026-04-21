@@ -1,11 +1,5 @@
 package folder.strings;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
-import java.util.Collections;
-import java.util.Stack;
-import java.util.stream.Collectors;
-
 public class DecodedString {
     public static void main(String[] args) {
         String s = "leet2code3";
